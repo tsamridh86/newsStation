@@ -4,7 +4,16 @@
 <script src="scripts/editorScript.js"></script>
 </head>
 <title>Editor</title>
-<?php require 'css/bootstrap.php'; ?>
+<?php require 'css/bootstrap.php'; 
+session_start();
+	{
+		if(empty($_SESSION['user']))
+			echo "Please login or sign up to post your opinion.
+					<a href = 'loginPage.php'>Click here</a> to be redirected.
+					";
+		else
+		{
+			echo '
 <div class="container-fluid background-color-purple">
 	<div class = "container background-color-white">
 		<p class = "heading"> Write an article</p>
@@ -110,5 +119,8 @@
  		 	</form>
  		 	</div>
  		 </div>
-	</div>
+	</div>';
+	}
+}
+?>	
 </html>
