@@ -25,7 +25,7 @@
  		 			<p class = "subtopic"> Title of the article : </p>
  		 		</div>
  		 		<div class="col-md-8 margin-5px margin-top-10px">
- 		 			<input type="text" name="title" id="inputTitle" class="form-control" value="" required="required" pattern="" title="">
+ 		 			<input type="text" name="title" class="form-control" required="required">
  		 		</div>
  		 	</div>
  		 	<div class="row">
@@ -71,8 +71,17 @@
  		 	</form>	
  		 	</div>
  		 	<div class="container-fluid advanced-user margin-5px margin-top-10px" id = "advanced">
+ 		 	<form method="post" action="preview.php" enctype="multipart/form-data">
  		 	<p>You may use bootstrap css or universal css notations, it will be displayed accordingly.</p>
  		 	<p>To display images, use source as the internet itself, upload feature coming soon.</p>
+ 		 	<div class="row">
+ 		 		<div class="col-md-2 margin-5px margin-top-13px"> 
+ 		 			<p class = "subtopic"> Title of the article : </p>
+ 		 		</div>
+ 		 		<div class="col-md-8 margin-5px margin-top-10px">
+ 		 			<input type="text" name="title" class="form-control" required="required">
+ 		 		</div>
+ 		 	</div>
  		 	<div class="row">
  		 		<div class="col-md-2 margin-5px margin-top-10px">
  		 			<p class="subtopic"> Category of article : </p>
@@ -93,6 +102,12 @@
  		 	<p>< html > </p>
  		 	<textarea name="advancedBody" id="input" class="form-control" rows="25" required="required"></textarea>
  		 	<p> < /html > </p>
+ 		 	<div class="row">
+ 		 			<div class="col-md-1 margin-5px margin-top-10px">
+ 		 				<button type="submit" class="btn btn-primary center-block" >Submit</button>
+ 		 			</div>
+ 		 		</div>
+ 		 	</form>
  		 	</div>
  		 </div>
 	</div>
