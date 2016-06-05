@@ -1,0 +1,34 @@
+.logo {
+	font-family : "ubuntu";
+	font-size: 30px;
+	color:white;
+}
+
+a.login {
+	text-decoration: none;
+	color:orange;
+	font-family: "Times New Roman";
+	font-size: 15px;
+	text-align: right;
+}
+
+.heading{
+	font-size: 25px;
+	font-family: "ubuntu";
+	color: crimson;
+	width: auto;
+}
+
+.nowTrending{
+	border: 1px solid blue;
+	margin-top: 10px;
+	margin-right: 10px;
+	padding-right:0px;
+}
+
+.latestNews{
+	margin-top: 10px;
+	margin-left:0px;
+	border: 1px solid blue;
+	padding-right:0px;
+}

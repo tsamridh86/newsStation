@@ -1,0 +1,33 @@
+.login {
+	background-color: #6CC417;
+	border-radius: 10px;
+	padding:10px;
+	display: block;
+}
+
+.login > p {
+	font-family: 'Ubuntu';
+}
+
+.signUp > p {
+	font-family: 'Ubuntu';
+	color: white;
+}
+.signUp > a {
+	
+	color: white;
+}
+.signUp {
+	background-color: #7118C4;
+	border-radius: 10px;
+	padding:10px;
+	display: none;
+}
+
+.errormsg{
+	color:red;
+	font-family: "Ubuntu";
+	text-align: center;
+	margin-top: 10px;
+	margin-bottom: 0px;
+}

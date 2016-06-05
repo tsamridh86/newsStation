@@ -1,0 +1,28 @@
+.heading {
+	font-family : "volkron";
+	font-size: 40px;
+}
+
+.subtopic {
+	font-family: "ubuntu";
+}
+
+.normal-user {
+	display: none;
+}
+
+.help {
+	margin-top: 10px;
+	margin: 5px;
+}
+.help > p {
+	font-family: "ubuntu";
+}
+
+.advanced-user {
+	display: none;
+}
+
+.advanced-user > p {
+	font-family: "ubuntu";
+}
