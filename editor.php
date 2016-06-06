@@ -82,7 +82,7 @@ session_start();
  		 	<div class="container-fluid advanced-user margin-5px margin-top-10px" id = "advanced">
  		 	<form method="post" action="preview.php" enctype="multipart/form-data">
  		 	<p>You may use bootstrap css or universal css notations, it will be displayed accordingly.</p>
- 		 	<p>To display images, use source as the internet itself, upload feature coming soon.</p>
+ 		 	<p>To display images, use source as the internet itself, upload feature will upload a banner only.</p>
  		 	<div class="row">
  		 		<div class="col-md-2 margin-5px margin-top-13px"> 
  		 			<p class = "subtopic"> Title of the article : </p>
@@ -92,9 +92,18 @@ session_start();
  		 		</div>
  		 	</div>
  		 	<div class="row">
+ 		 			<div class=" col-md-2 margin-5px margin-top-10px ">
+ 		 				<p class="subtopic"> Image (optional) : </p>
+ 		 			</div>
+ 		 			<div class="col-md-7 margin-5px margin-top-10px">
+ 		 				<input type="file"  name = "pic">
+ 		 			</div>
+ 		 		</div>
+ 		 	<div class="row">
  		 		<div class="col-md-2 margin-5px margin-top-10px">
  		 			<p class="subtopic"> Category of article : </p>
  		 		</div>
+
  		 		<div class="col-md-5 margin-5px">
  		 			<select name="category" id="inputCategory" class="form-control">
  		 				<option value="">-- Select One --</option>

@@ -43,7 +43,8 @@
 		 	$connect->query($que);
 		 	session_start();
 		 	$_SESSION['user'] = $res['newUserName'];
-		 	header("index.php");
+		 	$_SESSION['name'] = $res['firstName'];
+		 	header("location:index.php");
 		}	
 	}
 	$connect->close();
