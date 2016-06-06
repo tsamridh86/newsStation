@@ -1,5 +1,5 @@
 <?php
-
+	//This function returns the time 
 	function calcTime($secs)
 {
 	$bit = array(

@@ -27,6 +27,7 @@
 
 	//this function calculates the name of the image file. 
 	//The basic difference between these two functions here, that one of them has .txt extension manager & the other one does not
+	//also one is directed toward the text folder whilst the other one is at the image folder
 	function nameOfImage($fileName)
 	{
 		$i = 0;
@@ -72,6 +73,9 @@
 		$file_name = nameOfImage($file_name);
 		move_uploaded_file($file_temp,"images/".$file_name);
 
+		//to insert the things into the database.
+		$query = "insert into articles (userName , textLocation , inputType , category , imgLoc , heading , time ) values ('".$_SESSION['user']."',"
+		$connect->close();
 	}
 
 ?>	
