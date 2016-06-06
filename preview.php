@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<link rel = "stylesheet" href = "css/previewStyle.css">
 <?php
 	
 	//this function calculates the number of digits of a number, this is used the algorithms below
@@ -48,6 +50,7 @@
 	else 
 	{
 		require 'config/dbaccess.php';
+		require 'css/bootstrap.php';
 		$currentTime = $_SERVER['REQUEST_TIME'];
 		
 
@@ -69,12 +72,6 @@
 		fwrite($file, $text);
 		fclose($file);
 
-		//This is for displaying the text file on the screen
-		$file = fopen($name, "r") or exit("Unable to open file.");
-        while(!feof($file)){
-            echo fgets($file). "<br />";
-        }
-        fclose($file);
 
         
         //upload the image into the server
@@ -85,8 +82,25 @@
 		move_uploaded_file($file_temp,"images/".$file_name);
 
 		//to insert the things into the database.
-		$query = "insert into article (userName , textLocation , inputType , category , imgLoc , heading ) values ('".$_SESSION['user']."','".$name."','".$type."','".$_POST['category']."','"."images/".$file_name."','".$_POST['title']."')";
+		$ins = "insert into article (userName , textLocation , inputType , category , imgLoc , heading ) values ('".$_SESSION['user']."','".$name."','".$type."','".$_POST['category']."','"."images/".$file_name."','".$_POST['title']."')";
+		$connect->query($ins);
+		
+
+		//now to generate the actual preview of the item:
+		$res = "select * from article where textLocation = '".$name."';";
+		$res = $connect->query($res);
+		$res = $res->fetch_assoc();
+		echo "
+			<div class = 'container-fluid background-color-thistle'>
+			<div class = 'container background-color-white'>
+				<h2>".$res['heading']."</h2>
+				<img src = ".$res['imgLoc']." class = 'img-responsive banner'>
+				<p>".calcTime(abs($_SERVER['REQUEST_TIME']-strtotime($res['timeOfUpload'])))."</p>
+			</div>
+			</div>
+		";
 		$connect->close();
 	}
 
 ?>	
+</html>
