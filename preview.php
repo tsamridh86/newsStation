@@ -55,7 +55,17 @@
 		$name =  nameOfFile($_POST['category']);
 		$name = "text/".$name;
 		$file = fopen($name,"w");
-		$text = $_POST['normalBody'];
+		if(empty($_POST['advancedBody']))
+		{
+			$text = $_POST['normalBody'];
+			$type = 'N';
+		}
+		else if(empty($_POST['normalBody']))
+		{
+			$text = $_POST['advancedBody'];
+			$type = 'A';
+		}
+		
 		fwrite($file, $text);
 		fclose($file);
 
@@ -66,6 +76,7 @@
         }
         fclose($file);
 
+        
         //upload the image into the server
         //import image to the server page
 		$file_temp = $_FILES['pic']['tmp_name'];
@@ -74,7 +85,7 @@
 		move_uploaded_file($file_temp,"images/".$file_name);
 
 		//to insert the things into the database.
-		$query = "insert into articles (userName , textLocation , inputType , category , imgLoc , heading , time ) values ('".$_SESSION['user']."',"
+		$query = "insert into article (userName , textLocation , inputType , category , imgLoc , heading ) values ('".$_SESSION['user']."','".$name."','".$type."','".$_POST['category']."','"."images/".$file_name."','".$_POST['title']."')";
 		$connect->close();
 	}
 
