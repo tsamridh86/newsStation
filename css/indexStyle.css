@@ -32,3 +32,8 @@ a.login {
 	border: 1px solid blue;
 	padding-right:0px;
 }
+
+.navig {
+	border:none;
+	background: none;
+}

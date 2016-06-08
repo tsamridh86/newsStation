@@ -46,17 +46,19 @@
     <div class="navbar-header">
       <a class="navbar-brand" href="#">Categories</a>
     </div>
+    <form method = "get" action = "search.php">
     <ul class="nav navbar-nav">
+     
       <li class="active"><a href="#">Home</a></li>
-      <li><a href="#">National</a></li>
-      <li><a href="#">International</a></li> 
-      <li><a href="#">Sports</a></li> 
-      <li><a href="#">Entertainment</a></li> 
-      <li><a href="#">Opinion</a></li> 
-      <li><a href="#">Business</a></li> 
-      <li><a href="editor.php">Write an article...</li>
+      <li><a href="#"><button type="submit" name="category" class="navig" value = "national">National</button></a></li>
+      <li><a href="#"><button type="submit" name="category" class="navig" value = "international">International</button></a></li> 
+      <li><a href="#"><button type="submit" name="category" class="navig" value = "sports">Sports</button></a></li> 
+      <li><a href="#"><button type="submit" name="category" class="navig" value = "entertainment">Entertainment</button></a></li> 
+      <li><a href="#"><button type="submit" name="category" class="navig" value = "opinion">Opinion</button></a></li> 
+      <li><a href="#"><button type="submit" name="category" class="navig" value = "business">Business</button></a></li> 
+      <li><a href="editor.php">Write an article...</a></li>
     </ul>
-  
+  	</form>
 </nav>
 		<div class="row">
 			<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 nowTrending">

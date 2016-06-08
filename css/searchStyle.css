@@ -1,0 +1,32 @@
+.heading{
+	font-family : "Open Sans";
+}
+
+h3.heading{
+	font-size: 30px;
+}
+
+p.heading{
+	font-size : 15px;
+	font-weight: bolder;
+}
+.small-box{
+	padding : 5px;
+	border : 2px solid green;
+	border-radius : 10px;
+	margin: 5px;
+}
+
+.m-detail{
+	font-size: 15px;
+	color : grey;
+}
+
+.imgshow {
+	height: 300px;
+	width: auto;
+}
+.imgshow img {
+	max-width: 100%;
+	max-height: 100%;
+}

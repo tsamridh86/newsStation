@@ -2,6 +2,7 @@
 	//This function returns the time 
 	function calcTime($secs)
 {
+	if ($secs == 0 ) return "0 seconds ago";
 	$bit = array(
         ' year'        => $secs / 31556926 % 12,
         ' week'        => $secs / 604800 % 52,
@@ -36,7 +37,7 @@
 	$userTable  = "create table if not exists users ( userName varchar(25) primary key , password varchar(25) , firstName varchar(25) , lastName varchar(25));";
 	$connect->query($userTable);
 
-	$article = "create table if not exists article ( userName varchar(25) references users(userName) , articleID int primary key auto_increment, textLocation varchar(50) , inputType char(1), category varchar(30), imgLoc varchar(50) , heading varchar(50), timeOfUpload timestamp not null default CURRENT_TIMESTAMP);";
+	$article = "create table if not exists article ( userName varchar(25) references users(userName) , articleID int primary key auto_increment, textLocation varchar(50) , inputType char(1), category varchar(30), imgLoc varchar(50) , heading varchar(50), timeOfUpload int);";
 
 	$connect->query($article);
 

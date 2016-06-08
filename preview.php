@@ -2,48 +2,6 @@
 <link rel = "stylesheet" href = "css/previewStyle.css">
 <?php
 	
-	//this function calculates the number of digits of a number, this is used the algorithms below
-	function numberOfDigits($num)
-	{
-		if($num == 1 ) return 1;
-		 return ceil(log10($num));
-		
-	}
-
-	//this function calculates the name of the text file.
-	function nameOfFile($category)
-	{
-		$category = $category.".txt";
-		$i = 0;
-		while(file_exists("text/".$category))
-		{
-			if(!$i) 
-			$category = substr($category,0,-4).$i.substr($category, -4);
-			else 	 
-				$category= substr($category,0,-(numberOfDigits($i)+4)).$i.substr($category, -4);
-			$i++;
-		}
-
-		return $category;
-	}
-
-	//this function calculates the name of the image file. 
-	//The basic difference between these two functions here, that one of them has .txt extension manager & the other one does not
-	//also one is directed toward the text folder whilst the other one is at the image folder
-	function nameOfImage($fileName)
-	{
-		$i = 0;
-		while(file_exists("images/".$fileName))
-		{
-			if(!$i) 
-			$fileName = substr($fileName,0,-4).$i.substr($fileName, -4);
-			else 	 
-				$fileName= substr($fileName,0,-(numberOfDigits($i)+4)).$i.substr($fileName, -4);
-			$i++;
-		}
-
-		return $fileName;
-	}
 	session_start();
 	if(empty($_SESSION['user']))
 		header("location:index.php");
@@ -51,6 +9,7 @@
 	{
 		require 'config/dbaccess.php';
 		require 'css/bootstrap.php';
+		require 'config/functionBundle.php';
 		$currentTime = $_SERVER['REQUEST_TIME'];
 		
 
@@ -82,7 +41,7 @@
 		move_uploaded_file($file_temp,"images/".$file_name);
 
 		//to insert the things into the database.
-		$ins = "insert into article (userName , textLocation , inputType , category , imgLoc , heading ) values ('".$_SESSION['user']."','".$name."','".$type."','".$_POST['category']."','"."images/".$file_name."','".$_POST['title']."')";
+		$ins = "insert into article (userName , textLocation , inputType , category , imgLoc , heading, timeOfUpload ) values ('".$_SESSION['user']."','".$name."','".$type."','".$_POST['category']."','"."images/".$file_name."','".$_POST['title']."',".$_SERVER['REQUEST_TIME'].")";
 		$connect->query($ins);
 		
 
@@ -93,12 +52,19 @@
 		echo "
 			<div class = 'container-fluid background-color-thistle'>
 			<div class = 'container background-color-white'>
-				<h2>".$res['heading']."</h2>
-				<img src = ".$res['imgLoc']." class = 'img-responsive banner'>
-				<p>".calcTime(abs($_SERVER['REQUEST_TIME']-strtotime($res['timeOfUpload'])))."</p>
-			</div>
-			</div>
-		";
+				<h2>".$res['heading']."</h2>";
+				if(!$res['imgLoc'])
+					echo "<img src = ".$res['imgLoc']." class = 'img-responsive banner'>";
+			echo"<p class = 'time'>".calcTime(($_SERVER['REQUEST_TIME']-$res['timeOfUpload']))."</p>";
+			if(!$res['category'])
+				echo "<p class = 'hashtag'> #".$res['category']."</p>";
+			if($res['inputType'] == 'A')
+			{
+				
+			}
+			echo "</div>
+				   </div>
+					";
 		$connect->close();
 	}
 
