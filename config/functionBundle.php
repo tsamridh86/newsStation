@@ -43,14 +43,37 @@
 		return $fileName;
 	}
 
+
+	//This function is used to display the words on the screen, the 2nd parameter is used to limit the no of words
+	function showText($location,$limit = 0)
+	{
+		$myfile = fopen($location, "r") or die("Unable to open file!");
+		$count = 1 ;
+		while(!feof($myfile) && $count != $limit) {
+ 			 echo fgets($myfile) . "<br>";
+ 			 $count = $count + 1 ;
+			}
+		fclose($myfile);
+	}
+
+
+	//This function is used to display the div in the search page.
 	function showArticle ( $heading, $uploader,$textLocation , $inputType, $category,$imgLoc, $timeOfUpload)
 	{
 		echo "<div class = 'row'><div class = 'col-md-11 small-box'>";
+		echo "<div class = 'row'><div class = 'col-md-5'>";
 		echo "<p class = 'heading'>".$heading."</p>";
 		echo "<p class = 'm-detail'> By,".$uploader." on #".$category."</p>";
 		if(file_exists($imgLoc))
 			echo "<div class = 'imgshow'><img class = 'img-responsive' src = '".$imgLoc."'></div>";
 		echo "<p class= 'm-detail'> Posted : ".calcTime($_SERVER['REQUEST_TIME']-$timeOfUpload)."</p>";
+		echo "</div>";
+		if($inputType == 'N')
+		echo "<div class = 'col-md-6'><p class = 'body-text'>".showText($textLocation,10)."</p>";
+		else ($inputType == 'A')
+			echo "<div class = 'col-md-6'>".showText($textLocation);
 		echo "</div></div>";
+		echo "</div></div>";
+
 	}
 ?>

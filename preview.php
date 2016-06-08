@@ -10,7 +10,7 @@
 		require 'config/dbaccess.php';
 		require 'css/bootstrap.php';
 		require 'config/functionBundle.php';
-		$currentTime = $_SERVER['REQUEST_TIME'];
+		
 		
 
 		//This portions writes the body of the file into a text file.
@@ -52,16 +52,19 @@
 		echo "
 			<div class = 'container-fluid background-color-thistle'>
 			<div class = 'container background-color-white'>
-				<h2>".$res['heading']."</h2>";
+			<div class = 'row'> <div class = 'col-md-2'>
+				<h2>".$res['heading']."</h2> </div>
+				<div class = 'col-md-2 pull-right'><a href='index.php' class = 'redirect'>&rarr;Return to Home.</a></div></div>";
 				if(!$res['imgLoc'])
-					echo "<img src = ".$res['imgLoc']." class = 'img-responsive banner'>";
+					echo "<div class = 'banner'><img src = ".$res['imgLoc']." class = 'img-responsive'></div>";
 			echo"<p class = 'time'>".calcTime(($_SERVER['REQUEST_TIME']-$res['timeOfUpload']))."</p>";
 			if(!$res['category'])
 				echo "<p class = 'hashtag'> #".$res['category']."</p>";
-			if($res['inputType'] == 'A')
+			if($res['inputType'] == 'N')
 			{
-				
+			   echo "<p class = 'body-text'>";showText($res['textLocation']); echo "</p>";
 			}
+			else showText($res['textLocation']);
 			echo "</div>
 				   </div>
 					";
