@@ -58,7 +58,7 @@
 
 
 	//This function is used to display the div in the search page.
-	function showArticle ( $heading, $uploader,$textLocation , $inputType, $category,$imgLoc, $timeOfUpload)
+function showArticle ( $heading, $uploader,$textLocation , $inputType, $category,$imgLoc, $timeOfUpload,$articleId)
 	{
 		echo "<div class = 'row'><div class = 'col-md-11 small-box'>";
 		echo "<div class = 'row'><div class = 'col-md-5'>";
@@ -74,7 +74,8 @@
 		}
 		else
 			{echo "<div class = 'col-md-6'>"; showText($textLocation);}
-		echo "</div></div>";
+		echo "<input type = 'hidden' name = 'id' value = ".$articleId.">";
+		echo "<button type='submit' class='btn btn-primary' >Read on >></button></div></div>";
 		echo "</div></div>";
 
 	}

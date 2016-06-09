@@ -15,7 +15,7 @@
     		$que = "select * from article natural join users where category = '".$_GET['category']."' order by timeOfUpload desc; ";
     		$result = $connect->query($que);
     		while($row = $result->fetch_assoc())
-    		  showArticle($row['heading'],$row['firstName']." ".$row['lastName'],$row['textLocation'] , $row['inputType'], $row['category'],$row['imgLoc'], $row['timeOfUpload']);
+    		  showArticle($row['heading'],$row['firstName']." ".$row['lastName'],$row['textLocation'] , $row['inputType'], $row['category'],$row['imgLoc'], $row['timeOfUpload'],$row['articleID']);
     		$connect->close();
     	}
     if (!empty($_GET['query']))
@@ -26,7 +26,7 @@
             $que = "select * from article natural join users where heading like '%".$_GET['category']."%' order by timeOfUpload desc; ";
             $result = $connect->query($que);
             while($row = $result->fetch_assoc())
-              showArticle($row['heading'],$row['firstName']." ".$row['lastName'],$row['textLocation'] , $row['inputType'], $row['category'],$row['imgLoc'], $row['timeOfUpload']);
+              showArticle($row['heading'],$row['firstName']." ".$row['lastName'],$row['textLocation'] , $row['inputType'], $row['category'],$row['imgLoc'], $row['timeOfUpload'],$row['articleID']);
             $connect->close();
         }   	
  ?>
