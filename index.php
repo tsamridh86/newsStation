@@ -15,7 +15,7 @@
 			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
 				<form method="get" action="search.php">
 				<div class="input-group padding-4px">
-    				  <input type="text" class="form-control" placeholder="Search for...">
+    				  <input type="text" class="form-control" name = 'query' placeholder="Search for...">
      					 <span class="input-group-btn">
        					 <button class="btn btn-default
        					 				padding-top-9px

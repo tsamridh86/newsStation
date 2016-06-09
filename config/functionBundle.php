@@ -69,9 +69,11 @@
 		echo "<p class= 'm-detail'> Posted : ".calcTime($_SERVER['REQUEST_TIME']-$timeOfUpload)."</p>";
 		echo "</div>";
 		if($inputType == 'N')
-		echo "<div class = 'col-md-6'><p class = 'body-text'>".showText($textLocation,10)."</p>";
-		else ($inputType == 'A')
-			echo "<div class = 'col-md-6'>".showText($textLocation);
+		{	
+			echo "<div class = 'col-md-6'><p class = 'body-text'>";showText($textLocation,10); echo "</p>";
+		}
+		else
+			{echo "<div class = 'col-md-6'>"; showText($textLocation);}
 		echo "</div></div>";
 		echo "</div></div>";
 
