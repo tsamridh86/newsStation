@@ -61,6 +61,7 @@
 function showArticle ( $heading, $uploader,$textLocation , $inputType, $category,$imgLoc, $timeOfUpload,$articleId)
 	{
 		echo "<div class = 'row'><div class = 'col-md-11 small-box'>";
+		echo "<form method = 'get' action = 'display.php'>";
 		echo "<div class = 'row'><div class = 'col-md-5'>";
 		echo "<p class = 'heading'>".$heading."</p>";
 		echo "<p class = 'm-detail'> By,".$uploader." on #".$category."</p>";
@@ -70,13 +71,13 @@ function showArticle ( $heading, $uploader,$textLocation , $inputType, $category
 		echo "</div>";
 		if($inputType == 'N')
 		{	
-			echo "<div class = 'col-md-6'><p class = 'body-text'>";showText($textLocation,10); echo "</p>";
+			echo "<div class = 'col-md-6'><p class = 'body-text'>";showText($textLocation,5); echo "</p>";
 		}
 		else
-			{echo "<div class = 'col-md-6'>"; showText($textLocation);}
+			{echo "<div class = 'col-md-6'>"; showText($textLocation,5);}
 		echo "<input type = 'hidden' name = 'id' value = ".$articleId.">";
 		echo "<button type='submit' class='btn btn-primary' >Read on >></button></div></div>";
-		echo "</div></div>";
+		echo "</form></div></div>";
 
 	}
 ?>

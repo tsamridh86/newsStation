@@ -52,7 +52,7 @@
 		echo "
 			<div class = 'container-fluid background-color-thistle'>
 			<div class = 'container background-color-white'>
-			<div class = 'row'> <div class = 'col-md-2'>
+			<div class = 'row'> <div class = 'col-md-10'>
 				<h2>".$res['heading']."</h2> </div>
 				<div class = 'col-md-2 pull-right'><a href='index.php' class = 'redirect'>&rarr;Return to Home.</a></div></div>";
 				if(!$res['imgLoc'])

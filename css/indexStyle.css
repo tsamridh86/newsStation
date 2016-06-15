@@ -37,3 +37,9 @@ a.login {
 	border:none;
 	background: none;
 }
+
+.small-box {
+	border : 1px solid blue ;
+	background-color: #f4f4f4;
+	margin: 5px;
+}

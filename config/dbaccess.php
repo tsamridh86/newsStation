@@ -37,7 +37,7 @@
 	$userTable  = "create table if not exists users ( userName varchar(25) primary key , password varchar(25) , firstName varchar(25) , lastName varchar(25));";
 	$connect->query($userTable);
 
-	$article = "create table if not exists article ( userName varchar(25) references users(userName) , articleID int primary key auto_increment, textLocation varchar(50) , inputType char(1), category varchar(30), imgLoc varchar(50) , heading varchar(50), timeOfUpload int);";
+	$article = "create table if not exists article ( userName varchar(25) references users(userName) , articleID int primary key auto_increment, textLocation varchar(50) , inputType char(1), category varchar(30), imgLoc varchar(50) , heading varchar(50), timeOfUpload int, noOfViews int default 0);";
 
 	$connect->query($article);
 
