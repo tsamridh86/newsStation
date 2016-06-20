@@ -61,7 +61,7 @@
 				</form>
 			</nav>
 			<div class="row">
-				<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 nowTrending">
+				<div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 nowTrending">
 					<h4 class="heading"><span class="glyphicon glyphicon-fire" aria-hidden="true"></span> Now Trending:</h4>
 					<?php
 						$art = "select * from article natural join users order by noOfViews desc";
@@ -70,11 +70,11 @@
 						while($ar = $art->fetch_assoc() and $count < 5)
 						{
 							$count = $count + 1;
-							showArticle($ar['heading'],$ar['firstName']." ".$ar['lastName'],$ar['textLocation'] , $ar['inputType'], $ar['category'],'', $ar['timeOfUpload'],$ar['articleID']);
+							showArticle($ar['heading'],$ar['firstName'],$ar['textLocation'] , $ar['inputType'], $ar['category'],'', $ar['timeOfUpload'],$ar['articleID']);
 						}
 					?>
 				</div>
-				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 pull-right latestNews">
+				<div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 pull-right latestNews">
 					<h4 class = "heading"><span class="glyphicon glyphicon-time glyphicon " aria-hidden="true"></span> Latest News: </h4>
 					<?php
 						$art = "select * from article natural join users order by timeOfUpload desc";
@@ -83,7 +83,7 @@
 						while($ar = $art->fetch_assoc() and $count < 5)
 						{
 							$count = $count + 1;
-							showArticle($ar['heading'],$ar['firstName']." ".$ar['lastName'],$ar['textLocation'] , $ar['inputType'], $ar['category'],'', $ar['timeOfUpload'],$ar['articleID']);
+							showArticle($ar['heading'],$ar['firstName'],$ar['textLocation'] , $ar['inputType'], $ar['category'],'', $ar['timeOfUpload'],$ar['articleID']);
 						}
 						$connect->close();
 					?>
