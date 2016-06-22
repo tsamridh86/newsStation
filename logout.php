@@ -1,3 +1,4 @@
+<title> Logout </title>
 <?php
 	require 'css/bootstrap.php';
 	session_start();

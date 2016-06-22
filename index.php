@@ -3,9 +3,9 @@
 </head>
 <title>News Station</title>
 <?php  require 'css/bootstrap.php';
-	   require 'config/dbaccess.php';
-	   require 'config/functionBundle.php';
- ?>
+	require 'config/dbaccess.php';
+	require 'config/functionBundle.php';
+?>
 <div class="container-fluid background-color-aliceblue">
 	<div class="container background-color-white">
 		<div class="row padding-top-5px background-color-slategray">
