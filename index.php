@@ -32,7 +32,7 @@
 					session_start();
 					
 					if(empty($_SESSION['user']))
-					echo "<a href='loginPage.php' class = 'login'><span class='glyphicon glyphicon-user' aria-hidden='true'>Login</span></a>";
+					echo "<a href='loginPage.php' class = 'login'><span class='glyphicon glyphicon-user' aria-hidden='true'> Login</span></a>";
 					else
 					{
 					echo "<a href='userPage.php' class = 'login'><span class='glyphicon glyphicon-user' aria-hidden='true'>".$_SESSION['name']."</span></a>";
