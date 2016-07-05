@@ -1,5 +1,8 @@
 <?php
 	
+	//function ucfirst() (used in search.php) has been used to captilize the 1st letter of any string as the category of news is saved in lowercase format.
+
+
 	//this function calculates the number of digits of a number, this is used the algorithms below
 	function numberOfDigits($num)
 	{
@@ -64,7 +67,7 @@ function showArticle ( $heading, $uploader,$textLocation , $inputType, $category
 		echo "<form method = 'get' action = 'display.php'>";
 		echo "<div class = 'row'><div class = 'col-md-5'>";
 		echo "<p class = 'heading'>".$heading."</p>";
-		echo "<p class = 'm-detail'> By,".$uploader." on #".$category."</p>";
+		echo "<p class = 'm-detail'> By, ".$uploader." on #".$category."</p>";
 		if(file_exists($imgLoc))
 			echo "<div class = 'imgshow'><img class = 'img-responsive' src = '".$imgLoc."'></div>";
 		echo "<p class= 'm-detail'> Posted : ".calcTime($_SERVER['REQUEST_TIME']-$timeOfUpload)."</p>";
@@ -80,4 +83,5 @@ function showArticle ( $heading, $uploader,$textLocation , $inputType, $category
 		echo "</form></div></div>";
 
 	}
+
 ?>

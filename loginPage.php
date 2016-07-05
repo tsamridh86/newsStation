@@ -25,6 +25,8 @@
 			header("location:index.php");
 		}
 	}
+
+	//this section is for signup
 	if(!empty($_POST['newUserName']) && !empty($_POST['newPassword']) && !empty($_POST['firstName']) && !empty($_POST['lastName']))
 	{
 			
@@ -38,7 +40,8 @@
 		}
 		else
 		{
-			$que = "insert into users values ('".$_POST['newUserName']."','".$_POST['newPassword']."','".$_POST['firstName']."','".$_POST['lastName']."');";
+			$que = "insert into users values ('".$_POST['newUserName']."','".$_POST['newPassword']."','".ucfirst($_POST['firstName'])."','".ucfirst($_POST['lastName'])."');";
+			//ucfirst has been used in the first name & the last name to ensure that they are automatically uppercased whenever they are inserted into the database.
 			$connect->query($que);
 			session_start();
 			$_SESSION['user'] = $res['newUserName'];
@@ -68,6 +71,7 @@
 				<input type = 'text' name = 'lastName' class="form-control margin-bottom-10px" placeholder="Last Name." required  >
 				<input type = 'text' name = 'newUserName' class="form-control margin-bottom-10px" placeholder="Enter your User Name." required  >
 				<input type="password" name="newPassword" class="form-control margin-bottom-10px" placeholder="Enter your Password." required >
+				<p class="warning">The password must be 1-25 characters long.</p>
 				<button type="submit" class="btn btn-primary center-block" >Sign Up</button>
 				<a href="#" onclick="displayToggle();">Already a member? Login</a>
 			</div>

@@ -64,12 +64,10 @@
 				<div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 nowTrending">
 					<h4 class="heading"><span class="glyphicon glyphicon-fire" aria-hidden="true"></span> Now Trending:</h4>
 					<?php
-						$art = "select * from article natural join users order by noOfViews desc";
+						$art = "select * from article natural join users order by noOfViews desc limit 5";
 						$art = $connect->query($art);
-						$count = 0 ;
-						while($ar = $art->fetch_assoc() and $count < 5)
+						while($ar = $art->fetch_assoc())
 						{
-							$count = $count + 1;
 							showArticle($ar['heading'],$ar['firstName'],$ar['textLocation'] , $ar['inputType'], $ar['category'],'', $ar['timeOfUpload'],$ar['articleID']);
 						}
 					?>
@@ -77,12 +75,10 @@
 				<div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 pull-right latestNews">
 					<h4 class = "heading"><span class="glyphicon glyphicon-time glyphicon " aria-hidden="true"></span> Latest News: </h4>
 					<?php
-						$art = "select * from article natural join users order by timeOfUpload desc";
+						$art = "select * from article natural join users order by timeOfUpload desc limit 5";
 						$art = $connect->query($art);
-						$count = 0 ;
-						while($ar = $art->fetch_assoc() and $count < 5)
+						while($ar = $art->fetch_assoc())
 						{
-							$count = $count + 1;
 							showArticle($ar['heading'],$ar['firstName'],$ar['textLocation'] , $ar['inputType'], $ar['category'],'', $ar['timeOfUpload'],$ar['articleID']);
 						}
 						$connect->close();
