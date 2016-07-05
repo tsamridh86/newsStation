@@ -5,3 +5,7 @@
 .reading{
 	background-color: #CD853F;
 }
+
+strong {
+	cursor: pointer;
+}
