@@ -21,7 +21,7 @@
 		<div class="container reading">
 			<div class="alert alert-warning alert-dismissible" role="alert" id="topAlert">
 				<button type="button" class="close" data-dismiss="alert" aria-label="Close" id="closer"><span aria-hidden="true">&times;</span></button>
-				Don't like the brightness? <strong>Click here </strong> to go <span id="bright">dark</span>.
+				Don't like the brightness? <strong>Click here </strong> to go <span id="bright"></span>.
 			</div>
 		</div>
 	</div>
