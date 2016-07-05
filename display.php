@@ -3,7 +3,6 @@
 	require "config/dbaccess.php";
 	require "config/functionBundle.php";
 	require "css/bootstrap.php";
-
 	//retrieve the required contents of the database :
 	$query = "select * from article where articleId = ".$_GET['id'];
 	$result = $connect->query($query);
@@ -15,13 +14,16 @@
 <title><?php echo $result['heading'];?></title>
 <head>
 	<link rel="stylesheet" type="text/css" href="css/displayStyle.css">
+	<script src="scripts/displayScript.js"></script>
 </head>
 <body>
 	<div class="container-fluid bigBack">
 		<div class="container reading">
-			hello there
+			<div class="alert alert-warning alert-dismissible" role="alert" id="topAlert">
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close" id="closer"><span aria-hidden="true">&times;</span></button>
+				<strong>Warning!</strong> Better check yourself, you're not looking too good.
+			</div>
 		</div>
 	</div>
-
 </body>
 </html>
