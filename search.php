@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <head>
+    <?php require 'css/bootstrap.php';?>
     <link rel = "stylesheet" href="css/searchStyle.css">
 </head>
 <title><?php if(!empty($_GET['category'])) echo ucfirst($_GET['category'])." news";
@@ -13,7 +14,6 @@ echo "highlight('".$_GET['category']."');";
 } ?>
 };
 </script>
-<?php require 'css/bootstrap.php';?>
 <div class="container-fluid background-color-orange">
     <div class="container background-color-white">
         <nav class="navbar navbar-default">
@@ -47,30 +47,30 @@ echo "highlight('".$_GET['category']."');";
         <?php
         if (!empty($_GET['category']))
         {
-            echo "<h3 class = 'heading' >".ucfirst($_GET['category'])." News : </h3>";
-            require 'config/dbaccess.php';
-            require 'config/functionBundle.php';
-            $que = "select * from article natural join users where category = '".$_GET['category']."' order by timeOfUpload desc; ";
-            $result = $connect->query($que);
-            while($row = $result->fetch_assoc())
-                showArticle($row['heading'],$row['firstName']." ".$row['lastName'],$row['textLocation'] , $row['inputType'], $row['category'],$row['imgLoc'], $row['timeOfUpload'],$row['articleID']);
-            $connect->close();
+        echo "<h3 class = 'heading' >".ucfirst($_GET['category'])." News : </h3>";
+        require 'config/dbaccess.php';
+        require 'config/functionBundle.php';
+        $que = "select * from article natural join users where category = '".$_GET['category']."' order by timeOfUpload desc; ";
+        $result = $connect->query($que);
+        while($row = $result->fetch_assoc())
+        showArticle($row['heading'],$row['firstName']." ".$row['lastName'],$row['textLocation'] , $row['inputType'], $row['category'],$row['imgLoc'], $row['timeOfUpload'],$row['articleID']);
+        $connect->close();
         }
         if (!empty($_GET['query']))
         {
-            
-            require 'config/dbaccess.php';
-            require 'config/functionBundle.php';
-            $que = "select * from article natural join users where heading like '%".$_GET['query']."%' order by timeOfUpload desc; ";
-            $result = $connect->query($que);
-            if(mysqli_num_rows($result))
-                echo "<h3 class = 'heading' > News for \"".$_GET['query']."\" : </h3>";
-            else 
-                echo "<h3 class = 'heading' > Nothing found on \"".$_GET['query']."\". </h3>";
-            while($row = $result->fetch_assoc())
-                showArticle($row['heading'],$row['firstName']." ".$row['lastName'],$row['textLocation'] , $row['inputType'], $row['category'],$row['imgLoc'], $row['timeOfUpload'],$row['articleID']);
-            
-            $connect->close();
+        
+        require 'config/dbaccess.php';
+        require 'config/functionBundle.php';
+        $que = "select * from article natural join users where heading like '%".$_GET['query']."%' order by timeOfUpload desc; ";
+        $result = $connect->query($que);
+        if(mysqli_num_rows($result))
+        echo "<h3 class = 'heading' > News for \"".$_GET['query']."\" : </h3>";
+        else
+        echo "<h3 class = 'heading' > Nothing found on \"".$_GET['query']."\". </h3>";
+        while($row = $result->fetch_assoc())
+        showArticle($row['heading'],$row['firstName']." ".$row['lastName'],$row['textLocation'] , $row['inputType'], $row['category'],$row['imgLoc'], $row['timeOfUpload'],$row['articleID']);
+        
+        $connect->close();
         }
         ?>
     </div>
