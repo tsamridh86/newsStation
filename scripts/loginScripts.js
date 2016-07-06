@@ -1,5 +1,8 @@
 document.title = 'Login Page';
-
+$(document).ready(
+	function(){
+		$("#login").css("display","block");
+	});
 function displayToggle()
 	{
 		var loginTab = document.getElementById('login');

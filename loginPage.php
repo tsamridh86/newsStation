@@ -1,4 +1,5 @@
 <!DOCTYPE HTML>
+<?php require 'css/bootstrap.php'; ?>
 <head>
 	<link rel="stylesheet" href="css/loginStyle.css">
 	<script src="scripts/loginScripts.js"></script>
@@ -6,7 +7,6 @@
 <?php
 	//This section is for login.
 	require '/config/dbaccess.php';
-	require 'css/bootstrap.php';
 	if(!empty($_POST['userName']) && !empty($_POST['password']))
 	{
 		$que = "select * from users where userName = '".$_POST['userName']."' and password = '".$_POST['password']."';";
@@ -66,7 +66,7 @@
 		<form method = "post" action = loginPage.php>
 			<div id = "signUp" class="col-xs-5 col-sm-5 col-md-5 col-lg-5 col-md-offset-3
 				margin-top-10px signUp">
-				<p> Alright let's get started: </p>
+			<p> Alright! Let's get started: </p>
 				<input type = 'text' name = 'firstName' class="form-control margin-bottom-10px" placeholder="First Name." required  >
 				<input type = 'text' name = 'lastName' class="form-control margin-bottom-10px" placeholder="Last Name." required  >
 				<input type = 'text' name = 'newUserName' class="form-control margin-bottom-10px" placeholder="Enter your User Name." required  >

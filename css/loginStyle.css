@@ -14,9 +14,9 @@
 	color: white;
 }
 .signUp > a {
-	
 	color: white;
 }
+
 .signUp {
 	background-color: #7118C4;
 	border-radius: 10px;
@@ -30,4 +30,8 @@
 	text-align: center;
 	margin-top: 10px;
 	margin-bottom: 0px;
+}
+
+p.warning {
+	color : #ff4d4d;
 }
