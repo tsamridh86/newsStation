@@ -33,7 +33,13 @@
 			<div class="container-fluid"> <!-- This div is used to display the image -->
 				<img src=<?php echo "\"".$result['imgLoc']."\"" ;?> class = "img-responsive">
 			</div>
-
+			<!--Now to actually display the text that has been inside it-->
+			<?php
+				if($result['inputType'] == "N")
+					echo "<p class='bodyArea'>".showText($result['textLocation'])."<p>";
+				else 
+					echo showText($result['textLocation']);
+			?>
 		</div>
 	</div>
 </body>
