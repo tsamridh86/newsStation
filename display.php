@@ -26,8 +26,14 @@
 				Don't like the brightness? <strong>Click here </strong> to go <span id="bright"></span>.
 			</div>
 			<h3 class="heading"><?php echo $result['heading']; ?></h3>
-			<p class="credit">By, <?php echo $result['firstName']." ".$result['lastName'];?> on #<?php echo $result['category'];?> </p>
+			<p class="credit">By, <?php echo $result['firstName']." ".$result['lastName'];
+										if(!empty($result['category']))
+										 echo " on #".$result['category'];?> </p>
 			<p class="credit">Last Updated on : <?php echo calcTime($result['timeOfUpload']);?></p>
+			<div class="container-fluid"> <!-- This div is used to display the image -->
+				<img src=<?php echo "\"".$result['imgLoc']."\"" ;?> class = "img-responsive">
+			</div>
+
 		</div>
 	</div>
 </body>

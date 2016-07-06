@@ -57,7 +57,7 @@
 				<div class = 'col-md-2 pull-right'><a href='index.php' class = 'redirect'>&rarr;Return to Home.</a></div></div>";
 				if(!$res['imgLoc'])
 					echo "<div class = 'banner'><img src = ".$res['imgLoc']." class = 'img-responsive'></div>";
-			echo"<p class = 'time'>".calcTime(($_SERVER['REQUEST_TIME']-$res['timeOfUpload']))."</p>";
+			echo"<p class = 'time'>".calcTime($res['timeOfUpload'])."</p>";
 			if(!$res['category'])
 				echo "<p class = 'hashtag'> #".$res['category']."</p>";
 			if($res['inputType'] == 'N')

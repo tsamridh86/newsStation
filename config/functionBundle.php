@@ -70,7 +70,7 @@ function showArticle ( $heading, $uploader,$textLocation , $inputType, $category
 		echo "<p class = 'm-detail'> By, ".$uploader." on #".$category."</p>";
 		if(file_exists($imgLoc))
 			echo "<div class = 'imgshow'><img class = 'img-responsive' src = '".$imgLoc."'></div>";
-		echo "<p class= 'm-detail'> Posted : ".calcTime($_SERVER['REQUEST_TIME']-$timeOfUpload)."</p>";
+		echo "<p class= 'm-detail'> Posted : ".calcTime($timeOfUpload)."</p>";
 		echo "</div>";
 		if($inputType == 'N')
 		{	
