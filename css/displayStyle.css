@@ -9,3 +9,11 @@
 strong {
 	cursor: pointer;
 }
+
+.heading {
+	font-family: "ubuntu";
+}
+
+.credit {
+	font-size: 15px;
+}

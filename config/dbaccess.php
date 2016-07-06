@@ -1,26 +1,34 @@
 <?php
 	//This function returns the time 
-	function calcTime($secs)
-{
-	if ($secs == 0 ) return "0 seconds ago";
-	$bit = array(
-        ' year'        => $secs / 31556926 % 12,
-        ' week'        => $secs / 604800 % 52,
-        ' day'        => $secs / 86400 % 7,
-        ' hour'        => $secs / 3600 % 24,
-        ' minute'    => $secs / 60 % 60,
-        ' second'    => $secs % 60
-        );
-        
-    foreach($bit as $k => $v){
-        if($v > 1)$ret[] = $v . $k . 's';
-        if($v == 1)$ret[] = $v . $k;
-        }
-    array_splice($ret, count($ret)-1, 0, 'and');
-    $ret[] = 'ago.';
-    
-    return join(' ', $ret);
-}
+	function calcTime ($deadLine)
+	{
+		$timeRemaining = $deadLine - $_SERVER['REQUEST_TIME'];
+		if($timeRemaining < 0)
+		{
+		  $timeRemaining = abs($timeRemaining);
+		  $end = "ago.";
+		}
+		else if(!$timeRemaining) return 0;
+		else $end = "remaining.";
+		$timeRemaining = $timeRemaining / (60*60*24*365);	//converted into years
+		$yrs = floor($timeRemaining);						//removed the decimal part if any
+		$timeRemaining = (($timeRemaining - $yrs)*365);				//converted into days
+		$days = floor($timeRemaining);					//removed the decimal part if any
+		$timeRemaining = (($timeRemaining-$days)*24);				//converted into hrs
+		$hrs = floor($timeRemaining);						//removed the decimal part if any
+		$timeRemaining = (($timeRemaining-$hrs)*60);					//converted into mins
+		$min = floor($timeRemaining);						//removed decimals if any
+		$timeRemaining = (($timeRemaining-$min)*60);					//converted into seconds
+		$sec = floor($timeRemaining);						//removed decimals
+		$str = '';
+		if($yrs) $str = $str.$yrs." years ";			//concatnating stuff
+		if($days) $str = $str.$days." days ";
+		if($hrs) $str = $str.$hrs." hours ";
+		if($min) $str = $str.$min." minutes ";
+		if($sec) $str = $str.$sec." seconds ";
+		$str = $str.$end;
+		return $str;
+	}
 
 	//This page is just for the access of the database.
 	//This page also assigns the use of $connect as the connection medium to the database.

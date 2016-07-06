@@ -4,9 +4,11 @@
 	require "config/functionBundle.php";
 	require "css/bootstrap.php";
 	//retrieve the required contents of the database :
-	$query = "select * from article where articleId = ".$_GET['id'];
+	$query = "select * from article natural join users where articleId = ".$_GET['id'];
 	$result = $connect->query($query);
 	$result = $result->fetch_assoc();
+	$viewIncrease = "update article set noOfViews = ".($result['noOfViews']+1)." where articleId = ".$_GET['id'];
+	$connect->query($viewIncrease);
 	$connect->close();
 ?>
 <!DOCTYPE html>
@@ -23,6 +25,9 @@
 				<button type="button" class="close" data-dismiss="alert" aria-label="Close" id="closer"><span aria-hidden="true">&times;</span></button>
 				Don't like the brightness? <strong>Click here </strong> to go <span id="bright"></span>.
 			</div>
+			<h3 class="heading"><?php echo $result['heading']; ?></h3>
+			<p class="credit">By, <?php echo $result['firstName']." ".$result['lastName'];?> on #<?php echo $result['category'];?> </p>
+			<p class="credit">Last Updated on : <?php echo calcTime($result['timeOfUpload']);?></p>
 		</div>
 	</div>
 </body>
