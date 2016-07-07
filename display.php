@@ -35,11 +35,12 @@
 			</div>
 			<!--Now to actually display the text that has been inside it-->
 			<?php
-				if($result['inputType'] == "N")
-					echo "<p class='bodyArea'>".showText($result['textLocation'])."<p>";
+				if($result['inputType'] == 'N') //This for the normal input that the users have inputted into it.
+					{echo "<p class='textArea'>"; showText($result['textLocation']); echo "</p>";}
 				else 
-					echo showText($result['textLocation']);
+					showText($result['textLocation']);
 			?>
+			<p class="credit">Viewed : <?php echo $result['noOfViews']; ?> time(s).</p>
 		</div>
 	</div>
 </body>
