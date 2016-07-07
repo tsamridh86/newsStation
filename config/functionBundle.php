@@ -84,4 +84,18 @@ function showArticle ( $heading, $uploader,$textLocation , $inputType, $category
 
 	}
 
+	//This function is to write into the a text file
+	//Using the function will write it in the text file (if the name is repeated a new file is created) & will return the location of the saved file.
+	function writeText ($name, $text)
+	//the first parameter is the name of the text file, this name is used to be saved inside the database.
+	//the second parameter is the content of the text file, it is blindly written into the text files
+	{
+		$name =  nameOfFile($name);
+		$name = "text/".$name;
+		$file = fopen($name,"w");
+		fwrite($file, $text);
+		fclose($file);
+		return $name;
+	}
+
 ?>

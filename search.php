@@ -16,6 +16,7 @@ echo "highlight('".$_GET['category']."');";
 </script>
 <div class="container-fluid background-color-orange">
     <div class="container background-color-white">
+    <!--The nav tag here is exclusively for the navigation bar appearing on the top -->
         <nav class="navbar navbar-default">
             <div class="navbar-header">
                 <a class="navbar-brand">Categories</a>

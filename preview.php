@@ -14,9 +14,6 @@
 		
 
 		//This portions writes the body of the file into a text file.
-		$name =  nameOfFile($_POST['category']);
-		$name = "text/".$name;
-		$file = fopen($name,"w");
 		if(empty($_POST['advancedBody']))
 		{
 			$text = $_POST['normalBody'];
@@ -27,10 +24,8 @@
 			$text = $_POST['advancedBody'];
 			$type = 'A';
 		}
-		
-		fwrite($file, $text);
-		fclose($file);
-
+		$name = writeText($_POST['category'],$text);
+		//this functions returns the location where the file was saved.
 
         
         //upload the image into the server
@@ -55,9 +50,9 @@
 			<div class = 'row'> <div class = 'col-md-10'>
 				<h2>".$res['heading']."</h2> </div>
 				<div class = 'col-md-2 pull-right'><a href='index.php' class = 'redirect'>&rarr;Return to Home.</a></div></div>";
-				if(!$res['imgLoc'])
+				if(!empty($res['imgLoc']))
 					echo "<div class = 'banner'><img src = ".$res['imgLoc']." class = 'img-responsive'></div>";
-			echo"<p class = 'time'>".calcTime($res['timeOfUpload'])."</p>";
+			echo"<p class = 'time'>Last Updated on : ".calcTime($res['timeOfUpload'])."</p>";
 			if(!$res['category'])
 				echo "<p class = 'hashtag'> #".$res['category']."</p>";
 			if($res['inputType'] == 'N')
