@@ -71,6 +71,13 @@
 					showText($result['textLocation']);
 			?>
 			<p class="credit">Viewed : <?php echo ($result['noOfViews']+1); ?> time(s).</p>
+			<div class="writerDetails">
+			<!-- This div contains the details of the writer which is an optional input. If they are empty they are not displayed at all-->
+
+			</div>
+			<div class="commentSection">
+			<!-- This section is for the comments that various users can discuss about, since there is no administrator anybody can post whatever they please -->	
+			</div>
 		</div>
 	</div>
 </body>

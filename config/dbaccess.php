@@ -42,7 +42,7 @@
 	mysqli_select_db($connect , $dbName);
 
 	//To create a table of the users.
-	$userTable  = "create table if not exists users ( userName varchar(25) primary key , password varchar(25) , firstName varchar(25) , lastName varchar(25));";
+	$userTable  = "create table if not exists users ( userName varchar(25) primary key , password varchar(25) , firstName varchar(25) , lastName varchar(25), proPic varchar(50) default NULL , bio varchar(200) default NULL);";
 	$connect->query($userTable);
 
 	$article = "create table if not exists article ( userName varchar(25) references users(userName) , articleID int primary key auto_increment, textLocation varchar(50) , inputType char(1), category varchar(30), imgLoc varchar(50) , heading varchar(50), timeOfUpload int, noOfViews int default 0);";
