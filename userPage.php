@@ -34,12 +34,13 @@
 					<a class="list-group-item active" id="sideBar1" >User Details</a>
 					<a class="list-group-item" id="sideBar2" >Articles</a>
 					<a class="list-group-item" id="sideBar3" >Comments</a>
+					<a href="index.php" class="list-group-item">Back to Home</a>
 				</div>
 			</div>
 			<!--This side bar is for the other part of the story -->
 			<div class="col-xs-12 col-sm-10 col-md-9 col-lg-9">
 				<!--User Details Section -->
-				<div class="userDetails">
+				<div id="userDetails">
 					<div class="row">
 						<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
 							<p class="details">User Name : </p>
@@ -53,7 +54,7 @@
 							<p class="details"> Password : </p>
 						</div>
 						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-							<input type="password" class="form-control" name="password" value=<?php echo $userDetails['password']; ?>>
+							<input type="password" class="form-control" name="password" value=<?php echo $userDetails['password']; ?> maxlength="200">
 						</div>
 					</div>
 					<div class="row">
@@ -80,6 +81,23 @@
 							<input type="file" class="form-control" name="lastName" value=<?php echo $userDetails['proPic'];?>>
 						</div>
 					</div>
+					<div class="row">
+						<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+							<p class="details">Bio: </p>
+						</div>
+						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+							<textarea class="form-control" name="bio" maxlength="200" >
+							</textarea>
+						</div>
+					</div>
+				</div>
+				<!--Article Section here-->
+				<div id="articleSection" class="hidden">
+					This is the article Section
+				</div>
+				<!--Comment Section here -->
+				<div id="commentSection" class="hidden">
+					This is the comment section
 				</div>
 			</div>
 		</div>
