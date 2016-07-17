@@ -1,4 +1,4 @@
-<?php 
+<?php
 	session_start();
 	require "css/bootstrap.php";
 	require "config/dbaccess.php";
@@ -23,7 +23,7 @@
 				<?php
 				if(!empty($userDetails['proPic']))
 				echo "<img src=\"".$userDetails['proPic']."\" class='img-circle pull-right' alt='Profile Picture' style='height:100px;'>";
-			?>	
+				?>
 			</div>
 		</div>
 		
@@ -41,55 +41,61 @@
 			<div class="col-xs-12 col-sm-10 col-md-9 col-lg-9">
 				<!--User Details Section -->
 				<div id="userDetails">
-					<div class="row">
-						<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-							<p class="details">User Name : </p>
+					<form action="userPage.php" method="post">
+						<div class="row">
+							<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+								<p class="details">User Name : </p>
+							</div>
+							<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+								<input type="text" class="form-control"  value = <?php echo "\"".$userDetails['userName']."\"" ; ?> disabled>
+							</div>
 						</div>
-						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-							<input type="text" class="form-control"  value = <?php echo "\"".$userDetails['userName']."\"" ; ?> disabled>
+						<div class="row">
+							<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+								<p class="details"> Password : </p>
+							</div>
+							<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+								<input type="password" class="form-control" name="password" value=<?php echo $userDetails['password']; ?> maxlength="200">
+							</div>
 						</div>
-					</div>
-					<div class="row">
-						<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-							<p class="details"> Password : </p>
+						<div class="row">
+							<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+								<p class="details">First Name : </p>
+							</div>
+							<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+								<input type="text" class="form-control" name="firstName" value=<?php echo $userDetails['firstName']; ?>>
+							</div>
 						</div>
-						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-							<input type="password" class="form-control" name="password" value=<?php echo $userDetails['password']; ?> maxlength="200">
+						<div class="row">
+							<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+								<p class="details">Last Name : </p>
+							</div>
+							<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+								<input type="text" class="form-control" name="lastName" value=<?php echo $userDetails['lastName'];?>>
+							</div>
 						</div>
-					</div>
-					<div class="row">
-						<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-							<p class="details">First Name : </p>
+						<div class="row">
+							<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+								<p class="details">Picture : </p>
+							</div>
+							<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+								<input type="file" class="form-control" name="lastName" value=<?php echo $userDetails['proPic'];?>>
+							</div>
 						</div>
-						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-							<input type="text" class="form-control" name="firstName" value=<?php echo $userDetails['firstName']; ?>>
+						<div class="row">
+							<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+								<p class="details">Bio: </p>
+							</div>
+							<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+								<textarea class="form-control" name="bio" maxlength="200" ><?php echo $userDetails['bio'];?></textarea>
+							</div>
 						</div>
-					</div>
-					<div class="row">
-						<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-							<p class="details">Last Name : </p>
+						<div class="row">
+							<div class="col-xs-2 col-sm-2 col-md-1 col-lg-1">
+								<button type="submit" class="btn btn-primary">Make Changes</button>
+							</div>
 						</div>
-						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-							<input type="text" class="form-control" name="lastName" value=<?php echo $userDetails['lastName'];?>>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-							<p class="details">Picture : </p>
-						</div>
-						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-							<input type="file" class="form-control" name="lastName" value=<?php echo $userDetails['proPic'];?>>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-							<p class="details">Bio: </p>
-						</div>
-						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-							<textarea class="form-control" name="bio" maxlength="200" >
-							</textarea>
-						</div>
-					</div>
+					</form>
 				</div>
 				<!--Article Section here-->
 				<div id="articleSection" class="hidden">
@@ -103,7 +109,7 @@
 		</div>
 	</div>
 </body>
-<?php 
+<?php
 $connect->close();
 ?>
 </html>
