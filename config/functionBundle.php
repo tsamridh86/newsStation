@@ -46,6 +46,21 @@
 		return $fileName;
 	}
 
+	function nameOfProfile($fileName)
+	{
+		$i = 0;
+		while(file_exists("propic/".$fileName))
+		{
+			if(!$i) 
+			$fileName = substr($fileName,0,-4).$i.substr($fileName, -4);
+			else 	 
+				$fileName= substr($fileName,0,-(numberOfDigits($i)+4)).$i.substr($fileName, -4);
+			$i++;
+		}
+
+		return $fileName;
+	}
+
 
 	//This function is used to display the words on the screen, the 2nd parameter is used to limit the no of words
 	function showText($location,$limit = 0)
@@ -96,6 +111,16 @@ function showArticle ( $heading, $uploader,$textLocation , $inputType, $category
 		fwrite($file, $text);
 		fclose($file);
 		return $name;
+	}
+
+
+	//This function is used to see whether the two inputs are different or not
+	//this returns the output in either 0 or 1
+	//if the argument is different it returns 1 else it returns 0
+	function isDifferent($arg1 ,$arg2)
+	{
+		if($arg1==$arg2) return 0;
+		else return 1; 
 	}
 
 ?>

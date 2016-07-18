@@ -1,10 +1,49 @@
 <?php
+	//This section is for the retrival of the user details
 	session_start();
 	require "css/bootstrap.php";
 	require "config/dbaccess.php";
+	require "config/functionBundle.php";
 	$userDetails = "select * from users where userName = '".$_SESSION['user']."'";
 	$userDetails = $connect->query($userDetails);
 	$userDetails = $userDetails->fetch_assoc();
+?>
+<?php
+	//This is the php for the userDetails section, if there are any changes, only then will this section execute
+	if(!empty($_POST['password']) || !empty($_POST['firstName']) || !empty($_POST['lastName']) || !empty($_POST['proPic']) || !empty($_POST['bio']))
+	{
+		//This is the update section, if there are any changes
+		$query = '';
+		if(isDifferent($_POST['firstName'],$userDetails['firstName']))
+		 $query .= 'firstName = \''.$_POST['firstName'].'\'  , ';
+		if(isDifferent($_POST['lastName'],$userDetails['lastName']))
+		 $query .= 'lastName = \''.$_POST['lastName'].'\' , ';
+		if(isDifferent($_POST['bio'],$userDetails['bio']))
+		 $query .= 'bio = \''.$_POST['bio'].'\' , ';
+		if(isDifferent($_POST['password'],$userDetails['password']))
+		 $query .= 'password = \''.$_POST['password'].'\' , ';
+		if(!empty($_FILES['proPic']['tmp_name']))
+			{
+				//upload the image into the server
+        		//import image to the server page
+				$file_temp = $_FILES['proPic']['tmp_name'];
+				$file_name = $_FILES['proPic']['name'];
+				$file_name = nameOfProfile($file_name);
+				move_uploaded_file($file_temp,"propic/".$file_name);
+				$query .= ' proPic = \''."proPic/".$file_name.'\' , ';
+			}
+		//If there are any updates, only then will the update query be added	
+		if($query)
+		{ 
+			//add the update ahead of it
+			$query = "update users set ".$query;
+			//remove the tailing comma 
+			$query = substr($query,0,-2);
+			// add the where clause
+			$query .= "where userName = '".$userDetails['userName']."'";
+			$connect->query($query);
+		}		
+	}
 ?>
 <!doctype html>
 <title>User Details</title>
@@ -41,7 +80,7 @@
 			<div class="col-xs-12 col-sm-10 col-md-9 col-lg-9">
 				<!--User Details Section -->
 				<div id="userDetails">
-					<form action="userPage.php" method="post">
+					<form action="userPage.php" method="post" enctype="multipart/form-data">
 						<div class="row">
 							<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
 								<p class="details">User Name : </p>
@@ -79,7 +118,7 @@
 								<p class="details">Picture : </p>
 							</div>
 							<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-								<input type="file" class="form-control" name="lastName" value=<?php echo $userDetails['proPic'];?>>
+								<input type="file" name="proPic">
 							</div>
 						</div>
 						<div class="row">
